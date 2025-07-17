@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>{{page-title}}</title>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-white">
+
+    <header>
+        <nav
+            class="navbar bg-success navbar-expand-lg"
+            data-bs-theme="success"
+        >
+            <div class="container-fluid">
+                <a class="navbar-brand text-warning" href="/">Pokedex</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/pokemons/index">Pokémons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/regions/index">Regions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/types/index">Types</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5 flex-fill">
+        {{{body}}}
+    </main>
+
+    <footer class="bg-success text-white py-3 mt-5 border-top border-light">
+        <div class="container text-center">
+            <small>
+            &copy; 2025 <span>Joel Sebastián Tineo Severino</span> — All rights reserved.
+            </small>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/assets/js/lib/bootstrap/bootstrap.min.js"></script>
+    {{{_sections.scripts}}}
+</body>
+</html>

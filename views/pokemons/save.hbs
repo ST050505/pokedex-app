@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-warning text-dark rounded-top-4">
+            <h4 class="mb-0">
+                {{#if editMode}}<i class="bi bi-pencil"></i> Edit Pokémon{{else}}<i class="bi bi-file-plus"></i> Create new Pokémon{{/if}}
+            </h4>
+        </div>
+        <div class="card-body bg-white rounded-bottom-4">
+            <form action="{{#if editMode}}/pokemons/edit{{else}}/pokemons/create{{/if}}" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label text-dark"><i class="bi bi-person-vcard"></i> Name</label>
+                    <input type="text" value="{{#if editMode}}{{pokemon.name}}{{/if}}" class="form-control" id="name" name="name" placeholder="Ex: Pikachu, Charmander" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="picture" class="form-label text-dark"><i class="bi bi-file-image"></i> Picture URL</label>
+                    <input type="text" value="{{#if editMode}}{{pokemon.picture}}{{/if}}" class="form-control mb-2" id="picture" name="picture" placeholder="Enter image URL">
+                </div>
+
+                <div class="mb-3">
+                    <label for="typeId" class="form-label text-dark"><i class="bi bi-lightning-charge-fill me-1"></i> Type</label>
+                    <select id="typeId" name="typeId" class="form-select" required>
+                        <option value="" disabled {{#unless pokemon.typeId}}selected{{/unless}}>Select type...</option>
+                        {{#each typesList}}
+                            <option value="{{this.id}}" {{#if (eq this.id ../pokemon.typeId)}}selected{{/if}}>{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="regionId" class="form-label text-dark"><i class="bi bi-globe-americas me-1"></i> Region</label>
+                    <select id="regionId" name="regionId" class="form-select" required>
+                        <option value="" disabled {{#unless pokemon.regionId}}selected{{/unless}}>Select region...</option>
+                        {{#each regionsList}}
+                            <option value="{{this.id}}" {{#if (eq this.id ../pokemon.regionId)}}selected{{/if}}>{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                {{#if editMode}}
+                    <input type="hidden" name="PokemonId" value="{{pokemon.id}}">
+                {{/if}}
+
+                <div class="d-flex justify-content-between">
+                    <a href="/pokemons/index" class="btn btn-danger rounded-3"><i class="bi bi-arrow-left"></i> Get Back</a>
+                    <button type="submit" class="btn btn-success rounded-3"><i class="bi bi-bookmark-check"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

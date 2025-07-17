@@ -1,0 +1,48 @@
+<h1 class="text-center text-warning mb-4">Welcome to Pokedex!</h1>
+
+<form method="GET" action="/" class="row mb-4 g-3">
+    <div class="col-md-6">
+      <input type="text" name="search" value="{{search}}" class="form-control" placeholder="Search pokemons by name..." autocomplete="off">
+    </div>
+    <div class="col-md-4">
+      <select name="region" class="form-select">
+        <option value="" disabled {{#if (eq selectedRegion "")}}selected{{/if}}>All Regions</option>
+        {{#each regionsList}}
+          <option value="{{this.id}}" {{#if (eq this.id ../selectedRegion)}}selected{{/if}}>{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-md-2 d-grid">
+      <button type="submit" class="btn btn-primary text-white"><i class="bi bi-filter-circle"></i> Filter</button>
+    </div>
+</form>
+
+<div class="row row-cols-1 row-cols-md-5 g-3">
+  {{#if pokemonsList.length}}
+    {{#each pokemonsList}}
+      <div class="col">
+        <div class="card bg-white text-dark border border-danger shadow-sm rounded-4">
+          <img src="{{this.picture}}" class="card-img-top" alt="{{this.name}}">
+          <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <div class="mt-2">
+                    <span class="badge bg-primary d-block mb-2 ">
+                        <i class="bi bi-lightning-charge-fill me-1"></i> Type: {{this.Type.name}}
+                    </span>
+
+                    <span class="badge bg-success d-block">
+                        <i class="bi bi-globe-americas me-1"></i> Region: {{this.Region.name}}
+                    </span>
+                </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <div class="col-12">
+      <div class="alert alert-info text-center">
+        No pokemons found.
+      </div>
+    </div>
+  {{/if}}
+</div>

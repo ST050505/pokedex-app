@@ -1,0 +1,38 @@
+<div class="row">
+    <h1 class="text-center text-warning">Welcome to Regions List Page</h1>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-center text-warning">Regions List</h2>
+    <a href="/regions/create" class="btn btn-primary text-white rounded-3"><i class="bi bi-file-plus"></i> Create new region</a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-5 g-3">
+    {{#each regionsList}}
+    <div class="col">
+        <div class="card bg-white text-dark shadow-sm rounded-4">
+            <div class="card-body border border-danger rounded-top-4">
+                <h5 class="card-title">{{this.name}}</h5>
+            </div>
+            <div class="card-footer d-flex justify-content-between border border-danger border-top-0 rounded-bottom-4">
+                <a href="/regions/edit/{{this.id}}" class="btn btn-warning btn-sm text-light rounded-3"><i class="bi bi-pencil"></i> Edit</a>
+
+                <form method="post" action="/regions/delete"> 
+                    <input type="hidden" value="{{this.id}}" name="RegionId">
+                    <button type="submit" class="btn btn-danger btn-sm delete-region border rounded-3"><i class="bi bi-trash3"></i> Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="mt-4" style="width: 100vw; position: relative; left: 0; margin: 0;">
+        <div class="alert alert-info mb-0">
+            There are no regions registered yet.
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+{{#section "scripts"}}
+    <script src="/assets/js/site/regions/index.js"></script>
+{{/section}}

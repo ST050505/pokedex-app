@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-warning text-dark rounded-top-4">
+            <h4 class="mb-0">{{#if editMode}}<i class="bi bi-pencil"></i> Edit type{{else}}<i class="bi bi-file-plus"></i> Create new type{{/if}}</h4>
+        </div>
+        <div class="card-body bg-white rounded-bottom-4">
+            <form action="{{#if editMode}}/types/edit{{else}}/types/create{{/if}}" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label text-dark"><i class="bi bi-person-vcard"></i> Name</label>
+                    <input type="text" value="{{#if editMode}}{{type.name}}{{/if}}" class="form-control" id="name" name="name" placeholder="Ex: Fire, Water, Grass..." required>
+                </div>
+
+                {{#if editMode}}
+                    <input type="hidden" name="TypesId" value="{{type.id}}">
+                {{/if}}
+
+                <div class="d-flex justify-content-between">
+                    <a href="/types/index" class="btn btn-danger rounded-3"><i class="bi bi-arrow-left"></i> Get Back</a>
+                    <button type="submit" class="btn btn-success rounded-3"><i class="bi bi-bookmark-check"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
